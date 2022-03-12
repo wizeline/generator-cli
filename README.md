@@ -21,3 +21,11 @@
  -  Finally execute: 
  > *npm link*
 
+## Commit with semantic-release conventions:
+- fix Release:
+  - fix: your commit message
+- feature Release:
+  - feat: your commit message
+- breaking Release:
+  - perf: your commit message <br />
+  BREAKING CHANGE: Your explanation.
