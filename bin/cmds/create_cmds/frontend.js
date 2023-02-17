@@ -31,6 +31,7 @@ exports.handler = function (argv) {
     .then(() => {
       console.log(`[${name}] Frontend created.`);
       console.log(runCommand(`get frontends ${app}`));
+      runCommand(`frontends ${app}`);
     })
     .catch(console.error);
 };

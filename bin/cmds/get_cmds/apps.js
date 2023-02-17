@@ -5,7 +5,7 @@ exports.desc = 'display existing apps';
 exports.aliases = ['a'];
 exports.builder = {};
 exports.handler = function (argv) {
-  get('/Generator/GetApplications').then(apps => {
+  get('/Application').then(apps => {
     try {
       console.log(apps.map(a => a.Name).join('\n'));
     } catch (e) {

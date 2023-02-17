@@ -18,7 +18,7 @@ exports.handler = function (argv) {
   const { app } = argv;
   if (!app) return console.log('ups, app name is not defined and is needed (check config app)...');
 
-  get(`/Generator/GetComponentsInApplication/${app}`).then(components => {
+  get(`/Application/GetComponentsInApplication/${app}`).then(components => {
     try {
       console.log(components.map(a => a.Name).join('\n'));
     } catch (e) {

@@ -18,7 +18,7 @@ exports.handler = function (argv) {
   const { app } = argv;
   if (!app) return console.log('ups, app name is not defined and is needed (check config app)...');
 
-  get(`/Generator/GetFrontendsInApplication/${app}`).then(frontends => {
+  get(`/Application/GetFrontendsInApplication/${app}`).then(frontends => {
     try {
       console.log(
         frontends.map(f => {

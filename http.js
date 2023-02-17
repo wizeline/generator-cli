@@ -1,4 +1,4 @@
-require('isomorphic-fetch');
+const axios = require('axios');
 const fs = require('fs');
 
 const configPath = require('os').homedir() + '/generator.cli.config.json';
@@ -18,32 +18,34 @@ const Request = async (method, endpoint, data, BaseURL = cliConfig.GeneratorURL)
     //throw new Error('baseURL should be configured check (config url)')
   }
 
-  const config = {
-    method: method,
-    mode: 'cors',
-    // cache: 'no-cache',
-    headers: {
-      'Content-Type': 'application/json'
-      // Authorization: `Bearer ${AuthService.auth.user.BearerToken}`
-    },
-    body: null
-  };
-  if (['POST', 'PUT', 'DELETE'].includes(method)) config.body = JSON.stringify(data);
-
-  let response = await fetch(BaseURL + endpoint, config);
-
-  if (response) {
-    if (!response.ok) throw await response.json();
-    if (response.status == 403) console.log('Invalid Role.');
-    if (response.status == 401) throw response;
-  } else {
-    console.log('Failed to fetch. Probably server is down.');
-  }
   try {
-    const result = await response.json();
-    return result;
-  } catch (e) {
-    return null;
+    let response = await axios(BaseURL + endpoint, {
+      method,
+      data,
+    headers: {
+        // 'Content-Type': 'application/json'
+        // Authorization: `Bearer ${AuthService.auth?.BearerToken}`
+      }
+    });
+
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      // console.log(error.response.data);
+      throw error.response.data;
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      // console.log(error.request);
+      throw error.request;
+  } else {
+      // Something happened in setting up the request that triggered an Error
+      // console.log('Error', error.message);
+      throw error;
+  }
   }
 };
 

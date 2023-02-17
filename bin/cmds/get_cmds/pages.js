@@ -28,7 +28,7 @@ exports.handler = function (argv) {
     if (!app) return console.log('ups, app name is not defined and is needed (check config app)...');
     if (!frontend) return console.log('ups, frontend name is not defined and is needed (check config frontend)...');
 
-    get(`/Generator/GetPagesInApplicationAndFrontend/${app}/${frontend}`).then(pages => {
+    get(`/Application/GetPagesInApplicationAndFrontend/${app}/${frontend}`).then(pages => {
         console.log(pages);
     });
 }

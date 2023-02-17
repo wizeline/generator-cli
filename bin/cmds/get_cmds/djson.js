@@ -18,7 +18,7 @@ exports.handler = function (argv) {
   const { app } = argv;
   if (!app) return console.log('ups, app name is not defined and is needed (check config app)...');
 
-  get(`/Generator/GetApplicationDJSON/${app}`).then(djson => {
+  get(`/Application/GetApplicationDJSON/${app}`).then(djson => {
     try {
       console.log(JSON.stringify(djson, null, 2));
     } catch (e) {

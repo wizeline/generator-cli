@@ -18,7 +18,7 @@ exports.handler = function (argv) {
   const { app } = argv;
   if (!app) return console.log('ups, app name is not defined and is needed (check config app)...');
 
-  get(`/Generator/GetGatewaysInApplication/${app}`).then(gateways => {
+  get(`/Application/GetGatewaysInApplication/${app}`).then(gateways => {
     try {
       console.log(gateways.map(a => a.Name).join('\n'));
     } catch (e) {

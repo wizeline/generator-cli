@@ -18,7 +18,7 @@ exports.handler = function (argv) {
   const { app } = argv;
   if (!app) return console.log('ups, app name is not defined and is needed (check config app)...');
 
-  get(`/Generator/GetEntitiesInApplication/${app}`).then(entities => {
+  get(`/Application/GetEntitiesInApplication/${app}`).then(entities => {
     try {
       console.log(entities.map(a => a.Name).join('\n'));
     } catch (e) {

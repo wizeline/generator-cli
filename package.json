@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@semantic-release/git": "^10.0.1",
-    "isomorphic-fetch": "^3.0.0",
+    "axios": "^0.27.2",
     "jest": "^27.4.7",
     "semantic-release": "^19.0.2",
     "yargs": "^15.1.0"
   },
   "bin": {
-    "c": "bin/index.js"
+    "generator": "bin/index.js"
   },
   "jest": {
     "collectCoverage": true,
